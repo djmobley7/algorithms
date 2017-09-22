@@ -32,6 +32,24 @@ public class BinaryTree<T extends Comparable<T>> {
         return node;
     }
 
+    public boolean contains(T value){
+        return contains(root, value);
+    }
+
+    private boolean contains(Node node, T value){
+        if (node == null){
+            return false;
+        }
+
+        if (node.value.compareTo(value) > 0){
+            return contains(node.left, value);
+        } else if (node.value.compareTo(value) < 0) {
+            return contains(node.right, value);
+        }
+
+        return true;
+    }
+
     public int size(){
         return size(root);
     }
@@ -39,8 +57,8 @@ public class BinaryTree<T extends Comparable<T>> {
     private int size(Node node){
         if (node == null){
             return 0;
-        } else {
-            return size(node.left) + 1 + size(node.right);
         }
+
+        return size(node.left) + 1 + size(node.right);
     }
 }
