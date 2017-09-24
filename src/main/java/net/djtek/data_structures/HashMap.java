@@ -1,10 +1,12 @@
-package net.djtek;
+package net.djtek.data_structures;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation HashMap using Java Lists and generics
+ * Implementation of HashMap
+ * @param <K> The key object
+ * @param <V> The value object
  */
 public class HashMap<K, V> {
     class KeyValuePair<K, V> {
@@ -20,7 +22,7 @@ public class HashMap<K, V> {
     private List<List<KeyValuePair<K, V>>> hash; // use list to handle collisions
     private int bucketSize;
     private int size;
-
+    
     public HashMap(){
         this(512 /* default bucket size */);
     }

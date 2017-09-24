@@ -1,4 +1,4 @@
-package net.djtek;
+package net.djtek.data_structures;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

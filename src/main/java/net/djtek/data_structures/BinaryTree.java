@@ -1,5 +1,9 @@
-package net.djtek;
+package net.djtek.data_structures;
 
+/**
+ * Implementation of Binary Tree
+ * @param <T> The binary tree node object
+ */
 public class BinaryTree<T extends Comparable<T>> {
     class Node<T extends Comparable<T>> {
         T value;
@@ -67,6 +71,14 @@ public class BinaryTree<T extends Comparable<T>> {
         return size(root);
     }
 
+    private int size(Node node){
+        if (node == null){
+            return 0;
+        }
+
+        return size(node.left) + 1 + size(node.right);
+    }
+
     public enum PrintOrder {INORDER, PREORDER, POSTORDER};
 
     /**
@@ -116,13 +128,5 @@ public class BinaryTree<T extends Comparable<T>> {
             printPostOrder(node.right);
             System.out.print(node.value.toString() + " ");
         }
-    }
-
-    private int size(Node node){
-        if (node == null){
-            return 0;
-        }
-
-        return size(node.left) + 1 + size(node.right);
     }
 }
