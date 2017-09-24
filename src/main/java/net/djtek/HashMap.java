@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of generic HashMap using Java ArrayLists.
+ * Implementation HashMap using Java Lists and generics
  */
 public class HashMap<K, V> {
     class KeyValuePair<K, V> {
