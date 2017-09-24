@@ -11,8 +11,7 @@ public class HashMapTests {
         map.put("One", 1);
         map.put("Two", 2);
         map.put("Three", 3);
-        map.put("Four", 4);
-        assertEquals(4, map.size());
+        assertEquals(3, map.size());
 
         map.clear();
         assertEquals(0, map.size());
@@ -38,14 +37,22 @@ public class HashMapTests {
         assertNotNull(value);
         assertEquals(value.intValue(), 3);
 
+        // non-existent key
         assertNull (map.find("Four"));
     }
 
     @Test
     public void putTests(){
-        HashMap<String, Integer> map = new HashMap<>();
-        assertEquals(0, map.size());
+        putTests(new HashMap<>());
+    }
 
+    @Test
+    public void putWithOneBucketTests(){
+        // force collisions by just using 1 bucket
+        putTests(new HashMap<>(1));
+    }
+
+    private void putTests(HashMap<String, Integer> map){
         assertNull(map.put("One", 1));
         assertEquals(1, map.size());
 
@@ -65,27 +72,38 @@ public class HashMapTests {
     }
 
     @Test
-    public void putWithSmallBucketSizeTests(){
-        // create hash map with bucket size one so everything gets
-        // added to the same collision list
-        HashMap<String, Integer> map = new HashMap<>(1);
-        assertEquals(0, map.size());
+    public void removeTests(){
+        removeTests(new HashMap<>());
+    }
 
-        assertNull(map.put("One", 1));
-        assertEquals(1, map.size());
+    @Test
+    public void removeWithOneBucketTests(){
+        // force collisions by just using 1 bucket
+        removeTests(new HashMap<>(1));
+    }
 
-        // replace
-        assertNotNull(map.put("One", 1));
-        assertEquals(1, map.size());
+    private void removeTests(HashMap<String, Integer> map){
+        map.put("One", 1);
+        map.put("Two", 2);
+        map.put("Three", 3);
 
-        assertNull(map.put("Two", 2));
+        assertEquals(3, map.size());
+
+        map.remove("One");
         assertEquals(2, map.size());
 
-        assertNull(map.put("Three", 3));
-        assertEquals(3, map.size());
+        // remove same key again
+        map.remove("One");
+        assertEquals(2, map.size());
 
-        // replace again
-        assertNotNull(map.put("Three", 3));
-        assertEquals(3, map.size());
+        // remove non-existent key
+        map.remove("Four");
+        assertEquals(2, map.size());
+
+        map.remove("Two");
+        assertEquals(1, map.size());
+
+        map.remove("Three");
+        assertEquals(0, map.size());
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of generic HashMap using Java ArrayLists
+ * Implementation of generic HashMap using Java ArrayLists.
  */
 public class HashMap<K, V> {
     class KeyValuePair<K, V> {
@@ -17,7 +17,7 @@ public class HashMap<K, V> {
         }
     }
 
-    private List<List<KeyValuePair<K, V>>> hash;
+    private List<List<KeyValuePair<K, V>>> hash; // use list to handle collisions
     private int bucketSize;
     private int size;
 
@@ -44,6 +44,16 @@ public class HashMap<K, V> {
             hash.add(null);
         }
         size = 0;
+    }
+
+    /**
+     * Determine if the hash map contains key.  This is just a
+     * wrapper around find
+     * @param key  The key
+     * @return True if the hash map contains the key, false otherwise
+     */
+    public boolean contains(K key){
+        return find(key) != null;
     }
 
     /**
@@ -104,6 +114,24 @@ public class HashMap<K, V> {
         }
 
         return oldValue;
+    }
+
+    /**
+     * Remove the hash map entry for a given key if present
+     * @param key The key
+     */
+    public void remove(K key){
+        int bucket = findBucket(key);
+        List<KeyValuePair<K, V>> list = hash.get(bucket);
+        if (list != null) {
+            for (int i = 0; i < list.size(); ++i){
+                KeyValuePair<K, V> kvp = list.get(i);
+                if (kvp.key.equals(key)){
+                    list.remove(i);
+                    --size;
+                }
+            }
+        }
     }
 
     /**
