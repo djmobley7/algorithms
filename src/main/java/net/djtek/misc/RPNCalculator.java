@@ -5,8 +5,8 @@ import java.util.ArrayDeque;
 public class RPNCalculator {
     /**
      * Compute an RPN expression
-     * @param expression The comma-delimited expression string
-     * @return The computed value on success
+     * @param expression The comma-delimited expression string e.g. "2, 3, +, 5, *"
+     * @return The computed result on success
      * @throws IllegalArgumentException On error
      */
     public static double compute(String expression) throws IllegalArgumentException {
@@ -22,6 +22,8 @@ public class RPNCalculator {
         result = Double.parseDouble(tokens.pollLast());
 
         while (tokens.size() >= 2) {
+            // at this point we should always have a number followed by an operator, if not
+            // we throw an exception
             Double number = Double.parseDouble(tokens.pollLast());
             String operator = tokens.pollLast();
 

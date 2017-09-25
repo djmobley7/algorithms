@@ -15,7 +15,7 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    private Node root;
+    private Node<T> root;
 
     /**
      * Add a value to the binary tree.  Duplicate values are ignored.
