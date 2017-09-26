@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * Implementation of HashMap using Java Lists
- * @param <K> The key object
- * @param <V> The value object
+ * @param <K> The key type
+ * @param <V> The value type
  */
 public class HashMap<K, V> {
     class KeyValuePair<K, V> {

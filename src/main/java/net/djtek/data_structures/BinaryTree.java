@@ -2,7 +2,7 @@ package net.djtek.data_structures;
 
 /**
  * Implementation of Binary Tree
- * @param <T> The binary tree node object
+ * @param <T> The node value type
  */
 public class BinaryTree<T extends Comparable<T>> {
     class Node<T extends Comparable<T>> {
