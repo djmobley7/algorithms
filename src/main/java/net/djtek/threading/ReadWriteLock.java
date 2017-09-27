@@ -1,5 +1,13 @@
 package net.djtek.threading;
 
+/**
+ * Non-reentrant version of read/write lock
+ *
+ * Deadlock scenario:
+ *   Thread 1 calls lockRead
+ *   Thread 2 calls lockWrite
+ *   Thread 1 calls lockRead again
+ */
 public class ReadWriteLock {
     private int readers = 0;
     private int writers = 0;
