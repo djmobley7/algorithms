@@ -1,6 +1,5 @@
 package net.djtek.misc;
 
-import org.junit.Test;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
