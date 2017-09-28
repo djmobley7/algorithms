@@ -23,6 +23,16 @@ public class ArbitrarilyPreciseIntTests {
         assertEquals("1000000000000000000000", new ArbitrarilyPreciseInt("999_999_999_999_999_999_999").increment().toString());
     }
 
+//    @Test
+//    public void decrementTests(){
+//        assertEquals(0, new ArbitrarilyPreciseInt("1").decrement().toInt());
+//        assertEquals(9, new ArbitrarilyPreciseInt("10").decrement().toInt());
+//        assertEquals(999_999_999, new ArbitrarilyPreciseInt("1_000_000_000").decrement().toInt());
+//
+//        thrown.expect(IllegalArgumentException.class);
+//        assertEquals(0, new ArbitrarilyPreciseInt("0").decrement().toInt());
+//    }
+
     @Test
     public void toIntTests(){
         thrown.expect(NumberFormatException.class);
@@ -31,7 +41,19 @@ public class ArbitrarilyPreciseIntTests {
 
     @Test
     public void toStringTests(){
-        ArbitrarilyPreciseInt i = new ArbitrarilyPreciseInt("123456");
-        assertEquals("123456", i.toString());
+        assertEquals("1", new ArbitrarilyPreciseInt("1").toString());
+        assertEquals("12", new ArbitrarilyPreciseInt("12").toString());
+        assertEquals("123", new ArbitrarilyPreciseInt("123").toString());
+
+        // zero tests
+        assertEquals("0", new ArbitrarilyPreciseInt().toString());
+        assertEquals("0", new ArbitrarilyPreciseInt("0").toString());
+
+        // leading zero tests
+        assertEquals("0", new ArbitrarilyPreciseInt("00").toString());
+        assertEquals("1", new ArbitrarilyPreciseInt("01").toString());
+        assertEquals("1", new ArbitrarilyPreciseInt("001").toString());
+        assertEquals("123", new ArbitrarilyPreciseInt("0123").toString());
+        assertEquals("123", new ArbitrarilyPreciseInt("00123").toString());
     }
 }
