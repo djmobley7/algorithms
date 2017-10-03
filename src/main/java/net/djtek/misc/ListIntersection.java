@@ -8,8 +8,8 @@ import java.util.Set;
 /**
  * Created by danmobley on 9/30/17.
  */
-public class Lists {
-    public static <T> List<T> getIntersection(List<T> list1, List<T> list2){
+public class ListIntersection {
+    public static <T> List<T> get(List<T> list1, List<T> list2){
         Set<T> set = new HashSet<>();
 
         // iterate over smaller of the 2 lists
