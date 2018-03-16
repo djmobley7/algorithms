@@ -14,6 +14,6 @@ public class TowersOfHanoi {
         System.out.println(String.format("%s -> %s", startPeg, endPeg));
 
         // move n-1 rings from temp to end
-        printSteps(tempPeg, endPeg, startPeg, numRings - 1);
+        printSteps(tempPeg, startPeg, endPeg, numRings - 1);
     }
 }
