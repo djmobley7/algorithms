@@ -109,6 +109,18 @@ public class LinkedList<T> {
     }
 
     /**
+     * Return value at the front of the list
+     * @return The value or null if the linked list is empty
+     */
+    public T peekFront(){
+        T result = null;
+        if (front != null){
+            result = front.value;
+        }
+        return result;
+    }
+
+    /**
      * Return the length of the linked list
      * @return The length
      */
