@@ -14,6 +14,10 @@ public class LinkedList<T> {
     private Node front;
     private Node tail;
 
+    /**
+     * Add value to front of linked list
+     * @param value The value to add
+     */
     public void addToFront(T value){
         Node node = new Node(value);
 
@@ -30,6 +34,10 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Add value to tail of linked list
+     * @param value The value to add
+     */
     public void addToTail(T value){
         Node node = new Node(value);
 
@@ -46,40 +54,64 @@ public class LinkedList<T> {
         }
     }
 
+    /**
+     * Remove and return the value from the front of the linked list
+     * @return The value, or null if empty
+     */
     public T removeFromFront(){
         T result = null;
 
         if (front != null){
+            assert tail != null : "tail should not be null";
+
             result = front.value;
 
-            // update tail
-            if (tail == front){
-                tail = front.next;
+            // update front
+            front = front.next;
+            if (front != null){
+                front.prev = null;
             }
 
-            front = front.next;
+            // update tail
+            if (front == null){
+                tail = null;
+            }
         }
 
         return result;
     }
 
+    /**
+     * Remove and return the value from the tail of the linked list
+     * @return The value, or null if empty
+     */
     public T removeFromTail(){
         T result = null;
 
-        if (front != null) {
-            assert tail != null : "tail should not be null";
+        if (tail != null){
+            assert front != null : "front should not be null";
 
-            // get return value
             result = tail.value;
 
-            // move tail back and update next pointer (gc will handle the rest)
+            // update tail
             tail = tail.prev;
-            tail.next = null;
+            if (tail != null) {
+                tail.next = null;
+            }
+
+            // update front
+            if (tail == null){
+                front = null;
+            }
         }
 
         return result;
     }
 
+    /**
+     * Return the length of the linked list
+     * @return The length
+     */
     public int length(){
         int result = 0;
         for (Node current = front; current != null; current = current.next){
@@ -96,7 +128,7 @@ public class LinkedList<T> {
     public String toString(){
         StringBuilder sb = new StringBuilder ();
         for (Node current = front; current != null; current = current.next){
-            if (sb.length() > 1){
+            if (sb.length() > 0){
                 sb.append(", ");
             }
             sb.append(current.value);
