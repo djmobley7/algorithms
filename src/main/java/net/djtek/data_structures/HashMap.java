@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of HashMap using Java ListIntersection
+ * Implementation of HashMap using Java List
  * @param <K> The key type
  * @param <V> The value type
  */

@@ -2,7 +2,7 @@ package net.djtek.data_structures;
 
 /**
  * Stack implementation using LinkedList
- * @param <T> The value type stored by the stack
+ * @param <T> The value type to store
  */
 public class Stack<T>{
     private LinkedList<T> list = new LinkedList<>();

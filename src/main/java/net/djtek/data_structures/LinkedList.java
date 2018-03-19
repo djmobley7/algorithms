@@ -1,5 +1,9 @@
 package net.djtek.data_structures;
 
+/**
+ * Implementation of LinkedList
+ * @param <T> The value type to store
+ */
 public class LinkedList<T> {
     class Node{
         T value;
